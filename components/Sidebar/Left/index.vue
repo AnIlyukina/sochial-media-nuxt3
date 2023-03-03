@@ -28,7 +28,7 @@
           <HashtagIcon />
         </template>
         <template v-slot:name>
-          Home
+          Explore
         </template>
       </SidebarLeftTab>
 
