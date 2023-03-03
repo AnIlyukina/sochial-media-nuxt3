@@ -26,7 +26,7 @@
 <script setup>
 import useTailwindConfig from "../../../composables/useTailwindConfig";
 
-const defaultTransition = useTailwindConfig()
+const { defaultTransition } = useTailwindConfig()
 
 const props = defineProps({
   active: {
