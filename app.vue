@@ -2,7 +2,8 @@
   <div :class="{'dark': darkMode}">
     <div class="bg-white dark:bg-dim-900">
 
-      <div class="min-h-full">
+      <div v-if="user"
+        class="min-h-full">
         <div class=" grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5">
           <!-- Left sidebar -->
           <div class="hidden md:block xs-col-span-1 xl:col-span-2">
@@ -28,6 +29,11 @@
         </div>
       </div>
 
+      <LoadingPage
+        v-else-if="isLoading"/>
+
+      <AuthPage v-else/>
+
     </div>
 
 
@@ -35,7 +41,16 @@
 </template>
 
 <script setup>
+import useAuth from "./composables/useAuth";
+
 const darkMode = ref(false)
 
+const { useAuthUser, initAuth, useAuthLoading } = useAuth()
+
+const isLoading = useAuthLoading()
+const user = useAuthUser()
+onBeforeMount(() => {
+  initAuth()
+})
 
 </script>

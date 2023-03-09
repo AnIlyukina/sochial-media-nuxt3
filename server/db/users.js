@@ -11,11 +11,18 @@ export const createUser = (userDate) => {
     })
 }
 
-export const getUserByUsername = (userDate) => {
+export const getUserByUsername = (username) => {
     return prisma.user.findUnique({
         where: {
             username
         }
     })
+}
 
+export const getUserById = (userId) => {
+    return prisma.user.findUnique({
+        where: {
+            id: userId
+        }
+    })
 }
